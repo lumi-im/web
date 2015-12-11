@@ -1,0 +1,39 @@
+{{# partial "content" }}
+    <h2>{{group.name}} ({{group.id}})</h2>
+    <form action="/groups/{{group.id}}/leave/" method="post">
+        <input type="submit" value="Leave">
+    </form>
+    <h3>Members</h3>
+    <ul>
+        {{#each group.members}}
+            <li>{{this}}</li>
+        {{/each}}
+    </ul>
+    {{#if identities}}
+    <h3>Invite</h3>
+    <form action="/groups/{{group.id}}/invite/" method="post">
+        <ul>
+            {{#each identities}}
+                <li>
+                    <input type="checkbox" id="identities" name="members" value="{{this}}">
+                    <label for="identities">
+                        {{this}}
+                    </label>
+                </li>
+            {{/each}}
+        </ul>
+        <input type="submit" value="Invite">
+    </form>
+    {{/if}}
+    <h3>Messages</h3>
+    <ol>
+        {{#each messages}}
+            <li>{{identity}}: {{text}} </li>
+        {{/each}}
+    </ol>
+    <form action="/groups/{{group.id}}/" method="post">
+        <input type="text" name="text">
+        <input type="submit">
+    </form>
+{{/partial}}
+{{> base}}

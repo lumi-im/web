@@ -1,0 +1,18 @@
+{{# partial "content" }}
+    <h2>Prekeys</h2>
+<table>
+<tr>
+<th>ID</th>
+<th>Public Key</th>
+<th>Secret Key</th>
+</tr>
+{{#each this}}
+<tr>
+<td>{{id}}</td>
+<td>{{public}}</td>
+<td>{{secret}}</td>
+</tr>
+{{/each}}
+</table>
+{{/partial}}
+{{> base}}

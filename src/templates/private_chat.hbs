@@ -1,0 +1,13 @@
+{{# partial "content" }}
+    <h2>{{identity}}</h2>
+    <ol>
+        {{#each messages}}
+            <li>{{identity}}: {{text}} </li>
+        {{/each}}
+    </ol>
+    <form action="/identities/{{identity}}/" method="post">
+        <input type="text" name="text">
+        <input type="submit">
+    </form>
+{{/partial}}
+{{> base}}

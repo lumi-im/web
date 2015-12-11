@@ -1,0 +1,31 @@
+[package]
+name = "lumi-web"
+version = "0.1.0"
+
+[dependencies]
+ammonia = "*"
+axolotl = { path = "../axolotl" }
+byteorder = "0.3.13"
+crossbeam = "*"
+elliptic = "0.3.0"
+handlebars = "0.11.3"
+handlebars-iron = "0.9.1"
+hkdf = { git = "https://github.com/twittner/hkdf" }
+hyper = "0.6.14"
+iron = "*"
+mime = "*"
+mount = "*"
+persistent = "*"
+rand = "0.3.11"
+redis = "*"
+router = "*"
+rustc-serialize = "0.3.16"
+serde = "0.6.0"
+serde_json = "0.6.0"
+sodiumoxide = "0.0.9"
+staticfile = "*"
+term = "0.2.12"
+time = "0.1.32"
+toml = "*"
+url = "*"
+uuid = "*"

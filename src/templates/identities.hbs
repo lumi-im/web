@@ -1,0 +1,15 @@
+{{# partial "content" }}
+    <h2>Identity</h2>
+    <p>{{identity}}</p>
+    <h2>Identities</h2>
+    <ul>
+        {{#each identities}}
+            <li>
+                <code>
+                    <a href="/identities/{{this}}/">{{this}}</a>
+                </code>
+            </li>
+        {{/each}}
+    </ul>
+{{/partial}}
+{{> base}}
