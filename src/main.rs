@@ -811,7 +811,6 @@ fn send_message(message: &String, session: &mut Session) {
     let envelope = session.encrypt(&message.trim().as_bytes()).into_owned();
     let mut map = BTreeMap::new();
     map.insert("mac", envelope.mac.sig.0.to_vec().to_hex());
-    map.insert("message_enc", envelope.message_enc.to_hex());
     match envelope.message {
         Message::Keyed(m) => {
             map.insert("prekey_id", m.prekey_id.0.to_string());
@@ -939,11 +938,9 @@ fn get_oldest_message<'r>(identity: &IdentityKeyPair) -> Option<Envelope<'r>> {
                 for i in 0..32 {
                     buffer[i] = mac_buffer[i];
                 }
-                let message_enc = map.get("message_enc").unwrap().from_hex().unwrap();
                 envelope = Envelope {
                     mac: Mac { sig: Tag(buffer) },
                     message: Message::Keyed(prekey_message),
-                    message_enc: message_enc
                 }
             } else {
                 let session_tag = SessionTag {
@@ -965,11 +962,9 @@ fn get_oldest_message<'r>(identity: &IdentityKeyPair) -> Option<Envelope<'r>> {
                     ratchet_key: Cow::Owned(ratchet_key),
                     cipher_text: cipher_text
                 };
-                let message_enc = map.get("message_enc").unwrap().from_hex().unwrap();
                 envelope = Envelope {
                     mac: Mac { sig: Tag(buffer) },
                     message: Message::Plain(cipher_message),
-                    message_enc: message_enc
                 }
 
             }
